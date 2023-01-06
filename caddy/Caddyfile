@@ -1,0 +1,23 @@
+# Docs: https://caddyserver.com/docs/caddyfile
+laradock.test {
+    root * /var/www/public
+    php_fastcgi php-fpm:9000
+    file_server
+
+    encode gzip
+    tls internal
+}
+
+:80 {
+    @backendPath {
+        host localhost
+        path /api*
+    }
+    reverse_proxy @backendPath nginx:80
+
+    @adminerPath {
+        host localhost
+        path /adminer*
+    }
+    reverse_proxy @adminerPath adminer:8080
+}
