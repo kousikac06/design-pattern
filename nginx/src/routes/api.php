@@ -18,8 +18,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['prefix' => 'collect'], function () {
-    Route::get('test', 'Api\CollectController@test');
+Route::group(['prefix' => 'facade'], function () {
+    Route::get('/cooke-soup', 'Api\FacadeController@cookSoup');
+    Route::get('/after-cooke-clean', 'Api\FacadeController@AfterCookClean');
 });
 
 

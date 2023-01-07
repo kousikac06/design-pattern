@@ -2,27 +2,14 @@
 
 namespace App\Providers;
 
-use App\Http\Controllers\Api\TestController;
-use App\Http\Controllers\Api\TestThreeController;
-use App\Http\Controllers\Api\TestTwoController;
-use App\Model\Post;
-use App\Model\Video;
-use App\Rules\RuleInIf;
-use App\Services\TestService;
-use App\Services\TestServiceImpl;
-use App\Services\TestServiceOtherImpl;
-use App\Services\TestTrdService;
-use App\Services\TestTrdServiceImpl;
-use App\Services\TestTwoService;
-use App\Services\TestTwoServiceImpl;
-use App\Services\TestTrdServiceOtherExtendImpl;
-use App\Services\TestTwoServiceOtherImpl;
-use Illuminate\Database\Eloquent\Relations\Relation;
-use Illuminate\Queue\Events\JobFailed;
-use Illuminate\Queue\Events\JobProcessed;
-use Illuminate\Queue\Events\JobProcessing;
-use Illuminate\Support\Facades\Queue;
-use Illuminate\Support\Facades\Validator;
+use App\Pattern\Facade\Gas;
+use App\Pattern\Facade\GasInterface;
+use App\Pattern\Facade\GasStove;
+use App\Pattern\Facade\GasStoveInterface;
+use App\Pattern\Facade\Knife;
+use App\Pattern\Facade\KnifeInterface;
+use App\Pattern\Facade\Stockpot;
+use App\Pattern\Facade\StockpotInterface;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -43,5 +30,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        //Facade pattern
+        $this->app->bind(GasInterface::class, Gas::class);
+        $this->app->bind(GasStoveInterface::class, GasStove::class);
+        $this->app->bind(KnifeInterface::class, Knife::class);
+        $this->app->bind(StockpotInterface::class, Stockpot::class);
     }
 }
