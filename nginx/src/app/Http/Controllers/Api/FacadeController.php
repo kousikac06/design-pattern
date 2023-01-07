@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Model\User;
 use App\Pattern\Facade\SoupFacade;
 use Illuminate\Http\Request;
 
