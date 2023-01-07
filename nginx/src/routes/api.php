@@ -23,6 +23,11 @@ Route::group(['prefix' => 'facade'], function () {
     Route::get('/after-cooke-clean', 'Api\FacadeController@AfterCookClean');
 });
 
-
+Route::group(['prefix' => 'adapter'], function () {
+    Route::group(['prefix' => '/cook-method'], function () {
+        Route::get('/saute', 'Api\AdapterController@saute');
+        Route::get('/broil', 'Api\AdapterController@broil');
+    });
+});
 
 
