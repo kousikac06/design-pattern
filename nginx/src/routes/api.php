@@ -30,4 +30,13 @@ Route::group(['prefix' => 'adapter'], function () {
     });
 });
 
+Route::group(['prefix' => 'strategy'], function () {
+    Route::group(['prefix' => '/ice-cream'], function () {
+        Route::get('/info', 'Api\StrategyController@iceCreamInfo');
+    });
+});
+
+
+
+
 

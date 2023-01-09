@@ -10,6 +10,8 @@ use App\Pattern\Facade\Knife;
 use App\Pattern\Facade\KnifeInterface;
 use App\Pattern\Facade\Stockpot;
 use App\Pattern\Facade\StockpotInterface;
+use App\Pattern\Strategy\AmericaIceCream;
+use App\Pattern\Strategy\ButterfatStrategy;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -35,5 +37,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(GasStoveInterface::class, GasStove::class);
         $this->app->bind(KnifeInterface::class, Knife::class);
         $this->app->bind(StockpotInterface::class, Stockpot::class);
+
+        //Strategy pattern
+        $this->app->bind(ButterfatStrategy::class, AmericaIceCream::class);
     }
 }
