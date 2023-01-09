@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Pattern\Strategy\AmericaIceCream;
-use App\Pattern\Strategy\ButterfatStrategy;
 use App\Services\StrategyService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
