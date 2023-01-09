@@ -11,6 +11,12 @@ class IceCream
         $this->butterfatStrategy = $butterfatStrategy;
     }
 
+    public function initial($type): void
+    {
+        app()->bind(ButterfatStrategy::class, "App\Pattern\Strategy\\$type");
+        $this->butterfatStrategy = app()->make(ButterfatStrategy::class);
+    }
+
     public function getIceCreamButterfatContent(): string
     {
         return $this->butterfatStrategy->butterfatContentInfo();

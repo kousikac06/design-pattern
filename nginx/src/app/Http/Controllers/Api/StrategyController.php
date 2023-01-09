@@ -3,16 +3,14 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Services\StrategyService;
+use App\Pattern\Strategy\IceCream;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
 class StrategyController extends Controller
 {
-    protected $strategyService;
-
-    public function iceCreamInfo(Request $request, StrategyService $strategyService)
+    public function iceCreamInfo(Request $request, IceCream $iceCream)
     {
         $request->only(['type']);
 
@@ -31,8 +29,8 @@ class StrategyController extends Controller
                 ->setStatusCode(400);
         }
 
-        $strategyService->setInitialService($request->type);
-        $iceCreamButterfatContent = $strategyService->getIceCreamButterfatContent();
+        $iceCream->initial($request->type);
+        $iceCreamButterfatContent = $iceCream->getIceCreamButterfatContent();
 
         return response()
             ->json([
