@@ -8,8 +8,13 @@ class BridgeTest extends TestCase
 {
     public function iceCreamInfoByBrand(): void
     {
+        //因所有品牌用的乳脂資訊實做是一樣的，故只要測試 M 種品牌實做，再選任意品牌的 N 種乳脂資訊實做測試
         $this->getJson('/api/bridge/ice-cream/info?brand=A&type=AmericaIceCream')
             ->assertJson(['data' => '乳脂肪含量大於8% - brandA'])
+            ->assertSuccessful();
+
+        $this->getJson('/api/bridge/ice-cream/info?brand=B&type=AmericaIceCream')
+            ->assertJson(['data' => '乳脂肪含量大於8% - brandB'])
             ->assertSuccessful();
 
         $this->getJson('/api/bridge/ice-cream/info?brand=A&type=SoftServedIceCream')
@@ -18,18 +23,6 @@ class BridgeTest extends TestCase
 
         $this->getJson('/api/bridge/ice-cream/info?brand=A&type=Gelato')
             ->assertJson(['data' => '乳脂肪含量低於8% - brandA'])
-            ->assertSuccessful();
-
-        $this->getJson('/api/bridge/ice-cream/info?brand=B&type=AmericaIceCream')
-            ->assertJson(['data' => '乳脂肪含量大於8% - brandB'])
-            ->assertSuccessful();
-
-        $this->getJson('/api/bridge/ice-cream/info?brand=B&type=SoftServedIceCream')
-            ->assertJson(['data' => '乳脂肪含量3～6% - brandB'])
-            ->assertSuccessful();
-
-        $this->getJson('/api/bridge/ice-cream/info?brand=B&type=Gelato')
-            ->assertJson(['data' => '乳脂肪含量低於8% - brandB'])
             ->assertSuccessful();
     }
 
