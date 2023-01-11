@@ -36,6 +36,12 @@ Route::group(['prefix' => 'strategy'], function () {
     });
 });
 
+Route::group(['prefix' => 'bridge'], function () {
+    Route::group(['prefix' => '/ice-cream'], function () {
+        Route::get('/info', 'Api\BridgeController@iceCreamInfoByBrand');
+    });
+});
+
 
 
 
