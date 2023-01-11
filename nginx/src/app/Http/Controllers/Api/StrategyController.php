@@ -29,7 +29,7 @@ class StrategyController extends Controller
                 ->setStatusCode(400);
         }
 
-        $iceCream->initial($request->type);
+        $iceCream->setButterfatStrategy($request->type);
         $iceCreamButterfatContent = $iceCream->getIceCreamButterfatContent();
 
         return response()
