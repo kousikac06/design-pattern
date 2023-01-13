@@ -42,6 +42,12 @@ Route::group(['prefix' => 'bridge'], function () {
     });
 });
 
+Route::group(['prefix' => 'abstract-factory'], function () {
+    Route::group(['prefix' => '/ice-cream'], function () {
+        Route::get('/info', 'Api\AbstractFactoryController@iceCreamInfo');
+    });
+});
+
 
 
 

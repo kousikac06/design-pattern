@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
-class StrategyController extends Controller
+class AbstractFactoryController extends Controller
 {
     public function iceCreamInfo(Request $request, IceCream $iceCream)
     {
@@ -30,11 +30,16 @@ class StrategyController extends Controller
         }
 
         $iceCream->setIceCreamTypeFactory($request->type);
-        $iceCreamButterfatContent = $iceCream->get();
+
+        $iceCreamButterfatContent = $iceCream->getButterfatContentInfo();
+        $iceCreamCalorieContent   = $iceCream->getCalorieInfo();
 
         return response()
             ->json([
-                'data' => $iceCreamButterfatContent,
+                'data' => [
+                    'butterfat' => $iceCreamButterfatContent,
+                    'calorie'   => $iceCreamCalorieContent,
+                ],
             ])
             ->setStatusCode(200);
     }

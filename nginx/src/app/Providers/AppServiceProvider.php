@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Pattern\AbstractFactory\IceCreamTypeFactory;
+use App\Pattern\AbstractFactory\AmericaIceCream as AmericaIceCreamFac;
 use App\Pattern\Facade\Gas;
 use App\Pattern\Facade\GasInterface;
 use App\Pattern\Facade\GasStove;
@@ -38,7 +40,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(KnifeInterface::class, Knife::class);
         $this->app->bind(StockpotInterface::class, Stockpot::class);
 
-        //Strategy pattern
+        //Strategy pattern default
         $this->app->bind(ButterfatStrategy::class, AmericaIceCream::class);
     }
 }
