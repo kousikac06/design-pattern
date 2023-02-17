@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Pattern\AbstractFactory\IceCream;
+use App\Pattern\Strategy\IceCream;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -29,8 +29,8 @@ class StrategyController extends Controller
                 ->setStatusCode(400);
         }
 
-        $iceCream->setIceCreamTypeFactory($request->type);
-        $iceCreamButterfatContent = $iceCream->get();
+        $iceCream->setButterfatStrategy($request->type);
+        $iceCreamButterfatContent = $iceCream->getIceCreamButterfatContent();
 
         return response()
             ->json([
