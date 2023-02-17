@@ -11,8 +11,5 @@ abstract class Fruit implements TotalPrice
         $this->totalPrice = $totalPrice;
     }
 
-    public function calPrice() : int
-    {
-        return $this->totalPrice->calPrice();
-    }
+    abstract function calPrice() : int;
 }
