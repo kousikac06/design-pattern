@@ -54,6 +54,10 @@ Route::group(['prefix' => 'decorator'], function () {
     });
 });
 
+Route::group(['prefix' => 'template-method'], function () {
+    Route::get('/drink', 'Api\TemplateMethodController@makeDrink');
+});
+
 
 
 
