@@ -48,6 +48,12 @@ Route::group(['prefix' => 'abstract-factory'], function () {
     });
 });
 
+Route::group(['prefix' => 'decorator'], function () {
+    Route::group(['prefix' => '/ice-cream'], function () {
+        Route::get('/price', 'Api\DecoratorController@iceCreamPrice');
+    });
+});
+
 
 
 
