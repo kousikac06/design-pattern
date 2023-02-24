@@ -58,6 +58,10 @@ Route::group(['prefix' => 'template-method'], function () {
     Route::get('/drink', 'Api\TemplateMethodController@makeDrink');
 });
 
+Route::group(['prefix' => 'observer'], function () {
+    Route::get('/notify', 'Api\ObserverController@notify');
+});
+
 
 
 
