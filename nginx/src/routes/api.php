@@ -62,6 +62,11 @@ Route::group(['prefix' => 'observer'], function () {
     Route::get('/notify', 'Api\ObserverController@notify');
 });
 
+Route::group(['prefix' => 'singleton'], function () {
+    Route::get('/count', 'Api\SingletonController@iceCreamCount');
+    Route::get('/count-by-provider', 'Api\SingletonController@iceCreamCountByProvider');
+});
+
 
 
 
