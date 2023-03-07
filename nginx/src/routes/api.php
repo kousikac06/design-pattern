@@ -42,12 +42,6 @@ Route::group(['prefix' => 'bridge'], function () {
     });
 });
 
-Route::group(['prefix' => 'abstract-factory'], function () {
-    Route::group(['prefix' => '/ice-cream'], function () {
-        Route::get('/info', 'Api\AbstractFactoryController@iceCreamInfo');
-    });
-});
-
 Route::group(['prefix' => 'decorator'], function () {
     Route::group(['prefix' => '/ice-cream'], function () {
         Route::get('/price', 'Api\DecoratorController@iceCreamPrice');
@@ -66,6 +60,22 @@ Route::group(['prefix' => 'singleton'], function () {
     Route::get('/count', 'Api\SingletonController@iceCreamCount');
     Route::get('/count-by-provider', 'Api\SingletonController@iceCreamCountByProvider');
 });
+
+Route::group(['prefix' => 'abstract-factory'], function () {
+    Route::group(['prefix' => '/ice-cream'], function () {
+        Route::get('/info', 'Api\AbstractFactoryController@iceCreamInfo');
+    });
+});
+
+Route::group(['prefix' => 'factory'], function () {
+    Route::group(['prefix' => '/ice-cream'], function () {
+        Route::get('/info', 'Api\FactoryController@iceCreamButterfatInfo');
+    });
+});
+
+
+
+
 
 
 
