@@ -2,7 +2,7 @@
 
 namespace App\Pattern\Factory;
 
-class SoftServedIceCreamBuf implements ButterfatStrategy
+class SoftServedIceCream implements ButterfatStrategy
 {
     public function butterfatContentInfo(): string
     {

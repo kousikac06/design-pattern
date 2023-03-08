@@ -2,7 +2,7 @@
 
 namespace App\Pattern\Factory;
 
-class GelatoBuf implements ButterfatStrategy
+class Gelato implements ButterfatStrategy
 {
     public function butterfatContentInfo(): string
     {

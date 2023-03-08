@@ -13,10 +13,10 @@ class FactoryController extends Controller
 {
     public function iceCreamButterfatInfo(Request $request, IceCreamTypeFactory $iceCreamTypeFactory)
     {
-        $request->only(['type']);
+        $data = $request->only(['type']);
 
         $validator = Validator::make(
-            $request->all(),
+            $data,
             [
                 'type' => ['required', Rule::in(['AmericaIceCream', 'SoftServedIceCream', 'Gelato'])],
             ]
@@ -31,7 +31,7 @@ class FactoryController extends Controller
         }
 
         try {
-            $butterfatStrategy        = $iceCreamTypeFactory->getButterfatStrategy($request->type);
+            $butterfatStrategy        = $iceCreamTypeFactory->getButterfatStrategy($data['type']);
             $iceCreamButterfatContent = $butterfatStrategy->butterfatContentInfo();
 
             return response()
