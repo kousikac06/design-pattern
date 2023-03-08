@@ -12,10 +12,10 @@ class AbstractFactoryController extends Controller
 {
     public function iceCreamInfo(Request $request, IceCream $iceCream)
     {
-        $request->only(['type']);
+        $data = $request->only(['type']);
 
         $validator = Validator::make(
-            $request->all(),
+            $data,
             [
                 'type' => ['required', Rule::in(['AmericaIceCream', 'SoftServedIceCream', 'Gelato'])],
             ]
@@ -29,7 +29,7 @@ class AbstractFactoryController extends Controller
                 ->setStatusCode(400);
         }
 
-        $iceCream->setIceCreamTypeFactory($request->type);
+        $iceCream->setIceCreamTypeFactory($data['type']);
 
         $iceCreamButterfatContent = $iceCream->getButterfatContentInfo();
         $iceCreamCalorieContent   = $iceCream->getCalorieInfo();

@@ -13,10 +13,10 @@ class BridgeController extends Controller
 {
     public function iceCreamInfoByBrand(Request $request)
     {
-        $request->only(['type', 'brand']);
+        $data = $request->only(['type', 'brand']);
 
         $validator = Validator::make(
-            $request->all(),
+            $data,
             [
                 'type'  => ['required', Rule::in(['AmericaIceCream', 'SoftServedIceCream', 'Gelato'])],
                 'brand' => ['required', Rule::in(['brandA', 'brandB'])],
@@ -34,7 +34,7 @@ class BridgeController extends Controller
         app()->bind(IceCream::class, "App\Pattern\Bridge\\$request->brand");
         $brand = app()->make(IceCream::class);
 
-        $brand->setButterfatStrategy($request->type);
+        $brand->setButterfatStrategy($request['type']);
         $iceCreamButterfatContent = $brand->getIceCreamButterfatContent();
 
         return response()

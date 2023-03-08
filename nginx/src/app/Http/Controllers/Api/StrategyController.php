@@ -12,10 +12,10 @@ class StrategyController extends Controller
 {
     public function iceCreamInfo(Request $request, IceCream $iceCream)
     {
-        $request->only(['type']);
+        $data = $request->only(['type']);
 
         $validator = Validator::make(
-            $request->all(),
+            $data,
             [
                 'type' => ['required', Rule::in(['AmericaIceCream', 'SoftServedIceCream', 'Gelato'])],
             ]
@@ -29,7 +29,7 @@ class StrategyController extends Controller
                 ->setStatusCode(400);
         }
 
-        $iceCream->setButterfatStrategy($request->type);
+        $iceCream->setButterfatStrategy($data['type']);
         $iceCreamButterfatContent = $iceCream->getIceCreamButterfatContent();
 
         return response()
