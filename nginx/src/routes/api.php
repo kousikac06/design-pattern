@@ -73,6 +73,12 @@ Route::group(['prefix' => 'factory'], function () {
     });
 });
 
+Route::group(['prefix' => 'builder'], function () {
+    Route::group(['prefix' => '/ice-maker'], function () {
+        Route::get('/info', 'Api\BuilderController@getMakerInfo');
+    });
+});
+
 
 
 

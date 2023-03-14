@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Pattern\Builder\ICMMakerBuilder;
+use App\Pattern\Builder\ICMMakerFactory;
 use App\Pattern\Factory\IceCreamTypeFactory;
 use App\Pattern\AbstractFactory\AmericaIceCream as AmericaIceCreamFac;
 use App\Pattern\Facade\Gas;
@@ -48,5 +50,8 @@ class AppServiceProvider extends ServiceProvider
 
         //Factory pattern default
         $this->app->bind(IceCreamTypeFactory::class, ButterfatFactory::class);
+
+        //Builder pattern default
+        $this->app->bind(ICMMakerBuilder::class, ICMMakerFactory::class);
     }
 }
